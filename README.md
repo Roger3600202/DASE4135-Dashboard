@@ -56,3 +56,4 @@ The app opens on `http://localhost:3000` (Next.js dev). It polls the backend eve
 - Add Supabase Realtime subscriptions if you want push updates instead of polling.
 - Tighten CORS by setting `ALLOWED_ORIGINS` to your deployed frontend domain.
 - Extend history endpoint if you need longer windows or location filters.
+# DASE4135-Dashboard
