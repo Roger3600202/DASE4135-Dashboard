@@ -4,7 +4,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import supabase from '../lib/supabase';
 
 const SUPABASE_SOURCE = process.env.NEXT_PUBLIC_SUPABASE_URL || 'Supabase: inspection_logs';
-const LATEST_LIMIT = 50;
 
 const buildHistory = (logs) => {
   let total = 0;
@@ -39,8 +38,7 @@ export const useMetrics = (refreshMs = 1000) => {
       const { data, error: fetchError } = await supabase
         .from('inspection_logs')
         .select('*')
-        .order('created_at', { ascending: false })
-        .limit(LATEST_LIMIT);
+        .order('created_at', { ascending: false });
 
       if (fetchError) {
         throw fetchError;
@@ -71,10 +69,9 @@ export const useMetrics = (refreshMs = 1000) => {
         (payload) => {
           const incoming = payload.new;
           setLogs((prev) => {
-            const next = [incoming, ...prev.filter((log) => log.id !== incoming.id)].sort(
+            return [incoming, ...prev.filter((log) => log.id !== incoming.id)].sort(
               (a, b) => new Date(b.created_at) - new Date(a.created_at)
             );
-            return next.slice(0, LATEST_LIMIT);
           });
         }
       )
