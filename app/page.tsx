@@ -2,6 +2,7 @@
 
 import MetricCard from './components/MetricCard.jsx';
 import HistoryChart from './components/HistoryChart.jsx';
+import AIInsightCard from './components/AIInsightCard';
 import { useMetrics } from './hooks/useMetrics.js';
 
 const formatNumber = (value) => (value || value === 0 ? value.toLocaleString('en-US') : '—');
@@ -95,6 +96,10 @@ export default function Page() {
                 ))}
             </div>
           </div>
+        </section>
+
+        <section className="mt-6">
+          <AIInsightCard />
         </section>
       </div>
     </div>

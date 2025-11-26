@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import supabase from '../lib/supabase';
+import supabase from '@/lib/supabase';
 
 const SUPABASE_SOURCE = process.env.NEXT_PUBLIC_SUPABASE_URL || 'Supabase: inspection_logs';
 
